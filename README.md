@@ -2,6 +2,8 @@
 
 Grupo:
 
-Rodrigo Ruiz
-Kevin Medina
-Brian Rodriguez
+*Rodrigo Ruiz
+
+*Kevin Medina
+
+*Brian Rodriguez
