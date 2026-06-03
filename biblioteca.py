@@ -21,6 +21,8 @@ class Biblioteca:
         for s in self.socios:
             print(s)
 
+## Arroja error al intentar realizar la acción de prestamo , no reconoce ids.
+
     def prestar_material(self, socio_id, material_id):
         socio = next((s for s in self.socios if s.id == socio_id), None)
         material = next((m for m in self.materiales if m.id == material_id), None)
