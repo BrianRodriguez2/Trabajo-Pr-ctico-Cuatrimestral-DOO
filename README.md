@@ -1,4 +1,4 @@
-﻿# Trabajo-Pr-ctico-Cuatrimestral-DOO
+﻿# Trabajo Practico Cuatrimestral DOO #
 
 Grupo:
 

@@ -1,25 +1,22 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
-class Material():
-    def __init__(self,titulo,autor,editorial):
+class Material(ABC):
+    def __init__(self, id, titulo, autor, editorial, estado="Disponible"):
+        self.id = id
         self.titulo = titulo
-        self.editorial = editorial
         self.autor = autor
-        self.disponible = True
+        self.editorial = editorial
+        self.estado = estado
 
     def __str__(self):
-        return f"Titulo: {self.titulo}, Editorial: {self.editorial}, Autor: {self.autor}"
-    
+        return f"ID: {self.id}, Título: {self.titulo}, Autor: {self.autor}, Editorial: {self.editorial}, Estado: {self.estado}"
 
 class Libro(Material):
-    def __init__(self,titulo, autor, editorial, genero,id):
-        super().__init__(titulo, autor, editorial)
+    def __init__(self, id, titulo, autor, editorial, genero, estado="Disponible"):
+        super().__init__(id, titulo, autor, editorial, estado)
         self.genero = genero
-        self.id = id
 
-class Revistas(Material):
-    def __init__(self,titulo, autor, editorial,numero):
-        super().__init__(titulo, autor, editorial)
+class Revista(Material):
+    def __init__(self, id, titulo, autor, editorial, numero, estado="Disponible"):
+        super().__init__(id, titulo, autor, editorial, estado)
         self.numero = numero
-
-print(Revistas)
