@@ -1,6 +1,6 @@
-from biblioteca import Biblioteca
 from socio import Socio
 from materiales import Libro, Revista
+from biblioteca import Biblioteca
 
 def main():
     biblioteca = Biblioteca()
@@ -47,8 +47,6 @@ def main():
 
         elif opcion == "5":
             biblioteca.listar_materiales()
-
-#Consignas 6 y 7 arroja el mensaje.
 
         elif opcion == "6":
             socio_id = int(input("ID del socio: "))

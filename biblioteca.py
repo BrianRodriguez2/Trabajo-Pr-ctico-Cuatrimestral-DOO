@@ -5,7 +5,7 @@ class Biblioteca:
     def __init__(self):
         self.materiales = []
         self.socios = []
-        self.prestamos = []
+        self.prestamos = {}
 
     def agregar_material(self, material):
         self.materiales.append(material)
