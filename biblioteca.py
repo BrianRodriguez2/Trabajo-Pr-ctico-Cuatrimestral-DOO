@@ -1,43 +1,64 @@
-from socio import Socio
-from materiales import Libro, Revista
-
 class Biblioteca:
     def __init__(self):
-        self.materiales = []
         self.socios = []
-        self.prestamos = {}
-
-    def agregar_material(self, material):
-        self.materiales.append(material)
+        self.materiales = []
+        self.prestamos = []      # lista prestamos
+        self.devoluciones = []   # lista devoluciones
 
     def agregar_socio(self, socio):
         self.socios.append(socio)
 
-    def listar_materiales(self):
-        for m in self.materiales:
-            print(m)
+    def agregar_material(self, material):
+        self.materiales.append(material)
 
-    def listar_socios(self):
+    def mostrar_socios(self):
+        print("=== Socios ===")
         for s in self.socios:
             print(s)
 
-
+    def mostrar_materiales(self):
+        print("=== Materiales ===")
+        for m in self.materiales:
+            print(m)
 
     def prestar_material(self, socio_id, material_id):
         socio = next((s for s in self.socios if s.id == socio_id), None)
         material = next((m for m in self.materiales if m.id == material_id), None)
-        if socio and material and material.estado == "Disponible":
-            material.estado = "Prestado"
-            self.prestamos[material.id] = socio.id
-            print(f"Material {material.titulo} prestado a {socio.nombre}")
-        else:
-            print("No se pudo realizar el préstamo.")
 
-    def devolver_material(self, material_id):
+        if socio is None or material is None:
+            print("Error: socio o material no encontrado.")
+            return
+
+        if material.estado == "Prestado":
+            print("Error: el material ya está prestado.")
+            return
+
+        material.estado = "Prestado"
+        self.prestamos.append(f"Socio {socio.nombre} prestó {material.titulo}")
+        print(f"Material {material.titulo} prestado a {socio.nombre}.")
+
+    def devolver_material(self, socio_id, material_id):
+        socio = next((s for s in self.socios if s.id == socio_id), None)
         material = next((m for m in self.materiales if m.id == material_id), None)
-        if material and material.estado == "Prestado":
-            material.estado = "Disponible"
-            self.prestamos.pop(material.id, None)
-            print(f"Material {material.titulo} devuelto.")
-        else:
-            print("No se pudo realizar la devolución.")
+
+        if socio is None or material is None:
+            print("Error: socio o material no encontrado.")
+            return
+
+        if material.estado == "Disponible":
+            print("Error: el material ya está disponible, no se puede devolver.")
+            return
+
+        material.estado = "Disponible"
+        self.devoluciones.append(f"Socio {socio.nombre} devolvió {material.titulo}")
+        print(f"Material {material.titulo} devuelto por {socio.nombre}.")
+
+    def mostrar_prestamos(self):
+        print("=== Registro de préstamos ===")
+        for p in self.prestamos:
+            print(p)
+
+    def mostrar_devoluciones(self):
+        print("=== Registro de devoluciones ===")
+        for d in self.devoluciones:
+            print(d)

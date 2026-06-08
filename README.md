@@ -3,6 +3,7 @@
 Grupo:
 
 *Rodrigo Ruiz
+agregar error y registro de prestamo de prestamos
 
 *Kevin Medina
 
