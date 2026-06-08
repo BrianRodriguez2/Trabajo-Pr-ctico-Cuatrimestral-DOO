@@ -1,6 +1,6 @@
+from biblioteca import Biblioteca
 from socio import Socio
 from materiales import Libro, Revista
-from biblioteca import Biblioteca
 
 def main():
     biblioteca = Biblioteca()
@@ -19,50 +19,63 @@ def main():
         opcion = input("Elegí una opción: ")
 
         if opcion == "1":
-            nombre = input("Nombre: ")
-            dni = input("DNI: ")
+            nombre = input("Nombre del socio: ")
+            dni = input("DNI del socio: ")
             socio = Socio(nombre, dni)
             biblioteca.agregar_socio(socio)
+            print(f"Socio {nombre} agregado correctamente.")
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "2":
-            id = len(biblioteca.materiales) + 1
-            titulo = input("Título: ")
+            id_libro = int(input("ID del libro: "))
+            titulo = input("Título del libro: ")
             autor = input("Autor: ")
             editorial = input("Editorial: ")
             genero = input("Género: ")
-            libro = Libro(id, titulo, autor, editorial, genero)
+            libro = Libro(id_libro, titulo, autor, editorial, genero)
             biblioteca.agregar_material(libro)
+            print(f"Libro '{titulo}' agregado correctamente.")
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "3":
-            id = len(biblioteca.materiales) + 1
-            titulo = input("Título: ")
-            autor = input("Autor: ")
+            id_revista = int(input("ID de la revista: "))
+            titulo = input("Título de la revista: ")
             editorial = input("Editorial: ")
-            numero = input("Número de edición: ")
-            revista = Revista(id, titulo, autor, editorial, numero)
+            categoria = input("Categoría: ")
+            revista = Revista(id_revista, titulo, editorial, categoria)
             biblioteca.agregar_material(revista)
+            print(f"Revista '{titulo}' agregada correctamente.")
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "4":
-            biblioteca.listar_socios()
+            print("\n=== Socios ===")
+            biblioteca.mostrar_socios()
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "5":
-            biblioteca.listar_materiales()
+            print("\n=== Materiales ===")
+            biblioteca.mostrar_materiales()
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "6":
-            socio_id = int(input("ID del socio: "))
-            material_id = int(input("ID del material: "))
-            biblioteca.prestar_material(socio_id, material_id)
+            dni = input("DNI del socio: ")
+            id_material = int(input("ID del material: "))
+            biblioteca.prestar_material(dni, id_material)
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "7":
-            material_id = int(input("ID del material: "))
-            biblioteca.devolver_material(material_id)
+            dni = input("DNI del socio: ")
+            id_material = int(input("ID del material: "))
+            biblioteca.devolver_material(dni, id_material)
+            input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "8":
-            print("Saliendo...")
+            print("¡Hasta luego!")
             break
 
         else:
-            print("Opción inválida.")
+            print("Opción inválida. Intentá de nuevo.")
+            input("\nPresioná Enter para volver al menú...")
 
 if __name__ == "__main__":
     main()
