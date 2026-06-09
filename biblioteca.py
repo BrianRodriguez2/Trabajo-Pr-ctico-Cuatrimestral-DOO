@@ -6,7 +6,13 @@ class Biblioteca:
 
     # === SOCIOS ===
     def agregar_socio(self, socio):
+        #es para verificar si se repite el DNI, si se repite no se agrega el socio y se muestra un mensaje de error
+        for s in self.socios:
+            if s.dni == socio.dni:
+                print(f"Error: ya existe un socio con DNI {socio.dni}.")
+                return
         self.socios.append(socio)
+        print(f"Socio '{socio.nombre}' agregado correctamente.")
 
     def mostrar_socios(self):
         if not self.socios:

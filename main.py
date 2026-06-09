@@ -30,8 +30,9 @@ def main():
                 print("Error: el DNI debe ser numérico.")
             else:
                 socio = Socio(nombre, dni)
-                biblioteca.agregar_socio(socio)
-                print(f"Socio {nombre} agregado correctamente.")
+                if biblioteca.agregar_socio(socio):
+                 #si el socio se agregó correctamente, se muestra el mensaje de éxito
+                 print(f"Socio {nombre} agregado correctamente.")
             input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "2":
