@@ -58,3 +58,4 @@ class Biblioteca:
                 print(f"Material '{material.titulo}' devuelto por {socio.nombre}.")
                 return
         print("No se encontró el préstamo correspondiente.")
+
