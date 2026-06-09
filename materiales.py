@@ -1,22 +1,32 @@
-from abc import ABC
-
-class Material(ABC):
-    def __init__(self, id, titulo, autor, editorial, estado="Disponible"):
+class Material:
+    def __init__(self, id, titulo):
         self.id = id
         self.titulo = titulo
-        self.autor = autor
-        self.editorial = editorial
-        self.estado = estado
+        self.disponible = True
 
     def __str__(self):
-        return f"ID: {self.id}, Título: {self.titulo}, Autor: {self.autor}, Editorial: {self.editorial}, Estado: {self.estado}"
+        estado = "Disponible" if self.disponible else "Prestado"
+        return f"ID: {self.id}, Título: {self.titulo}, Estado: {estado}"
+
 
 class Libro(Material):
-    def __init__(self, id, titulo, autor, editorial, genero, estado="Disponible"):
-        super().__init__(id, titulo, autor, editorial, estado)
+    def __init__(self, id, titulo, autor, editorial, genero):
+        super().__init__(id, titulo)
+        self.autor = autor
+        self.editorial = editorial
         self.genero = genero
 
+    def __str__(self):
+        estado = "Disponible" if self.disponible else "Prestado"
+        return f"[Libro] ID: {self.id}, Título: {self.titulo}, Autor: {self.autor}, Editorial: {self.editorial}, Género: {self.genero}, Estado: {estado}"
+
+
 class Revista(Material):
-    def __init__(self, id, titulo, autor, editorial, numero, estado="Disponible"):
-        super().__init__(id, titulo, autor, editorial, estado)
-        self.numero = numero
+    def __init__(self, id, titulo, editorial, categoria):
+        super().__init__(id, titulo)
+        self.editorial = editorial
+        self.categoria = categoria
+
+    def __str__(self):
+        estado = "Disponible" if self.disponible else "Prestado"
+        return f"[Revista] ID: {self.id}, Título: {self.titulo}, Editorial: {self.editorial}, Categoría: {self.categoria}, Estado: {estado}"

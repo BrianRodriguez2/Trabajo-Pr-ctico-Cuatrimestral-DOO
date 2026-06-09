@@ -59,3 +59,12 @@ class Biblioteca:
                 return
         print("No se encontró el préstamo correspondiente.")
 
+    def mostrar_prestamos(self):
+        if not self.prestamos:
+            print("No hay préstamos registrados.")
+        else:
+            print("=== Préstamos activos ===")
+            for socio, material in self.prestamos:
+                print(f"Socio: {socio.nombre} (DNI: {socio.dni}) - Material: {material.titulo} (ID: {material.id})")
+
+
