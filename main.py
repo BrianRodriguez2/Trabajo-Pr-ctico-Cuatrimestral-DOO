@@ -49,8 +49,8 @@ def main():
             genero = input("Género: ")
 
             libro = Libro(id_libro, titulo, autor, editorial, genero)
-            biblioteca.agregar_material(libro)
-            print(f"Libro '{titulo}' agregado correctamente.")
+            if biblioteca.agregar_material(libro):
+                print(f"Libro '{titulo}' agregado correctamente.")
             input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "3":
@@ -66,8 +66,8 @@ def main():
             categoria = input("Categoría: ")
 
             revista = Revista(id_revista, titulo, editorial, categoria)
-            biblioteca.agregar_material(revista)
-            print(f"Revista '{titulo}' agregada correctamente.")
+            if biblioteca.agregar_material(revista): 
+                print(f"Revista '{titulo}' agregada correctamente.")
             input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "4":

@@ -31,7 +31,12 @@ class Biblioteca:
 
     # === MATERIALES ===
     def agregar_material(self, material):
+        for m in self.materiales:
+            if m.id == material.id:
+                print(f"Error: ya existe un material con ID {material.id}.")
+                return False # Retorna False si no se pudo agregar el material por ID duplicado
         self.materiales.append(material)
+        return True # Retorna True si el material se agregó correctamente
 
     def mostrar_materiales(self):
         if not self.materiales:
