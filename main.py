@@ -11,19 +11,24 @@ def main():
         print("2. Agregar libro")
         print("3. Agregar revista")
         print("4. Listar socios")
-        print("5. Listar materiales")
-        print("6. Prestar material")
-        print("7. Devolver material")
-        print("8. Salir")
+        print("5. Borrar socio")
+        print("6. Listar materiales")
+        print("7. Prestar material")
+        print("8. Devolver material")
+        print("9. Salir")
 
         opcion = input("Elegí una opción: ")
 
         if opcion == "1":
-            nombre = input("Nombre del socio: ")
-            dni = input("DNI del socio: ")
-            socio = Socio(nombre, dni)
-            biblioteca.agregar_socio(socio)
-            print(f"Socio {nombre} agregado correctamente.")
+            nombre = input("Nombre del socio: ").strip()
+            dni = input("DNI del socio: ").strip()
+
+            if not nombre or not dni:
+                print("Error: el nombre y el DNI son obligatorios.")
+            else:
+                socio = Socio(nombre, dni)
+                biblioteca.agregar_socio(socio)
+                print(f"Socio {nombre} agregado correctamente.")
             input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "2":
@@ -53,23 +58,31 @@ def main():
             input("\nPresioná Enter para volver al menú...")
 
         elif opcion == "5":
+            dni = input("DNI del socio a borrar: ").strip()
+            if not dni:
+                print("Error: el DNI es obligatorio.")
+            else:
+                biblioteca.borrar_socio(dni)
+            input("\nPresioná Enter para volver al menú...")
+
+        elif opcion == "6":
             print("\n=== Materiales ===")
             biblioteca.mostrar_materiales()
             input("\nPresioná Enter para volver al menú...")
 
-        elif opcion == "6":
-            dni = input("DNI del socio: ")
+        elif opcion == "7":
+            dni = input("DNI del socio: ").strip()
             id_material = int(input("ID del material: "))
             biblioteca.prestar_material(dni, id_material)
             input("\nPresioná Enter para volver al menú...")
 
-        elif opcion == "7":
-            dni = input("DNI del socio: ")
+        elif opcion == "8":
+            dni = input("DNI del socio: ").strip()
             id_material = int(input("ID del material: "))
             biblioteca.devolver_material(dni, id_material)
             input("\nPresioná Enter para volver al menú...")
 
-        elif opcion == "8":
+        elif opcion == "9":
             print("¡Hasta luego!")
             break
 
